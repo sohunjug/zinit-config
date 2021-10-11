@@ -46,7 +46,7 @@ zinit wait lucid for \
   OMZP::fasd \
   OMZP::extract \
   OMZP::git-extras \
-  OMZP::sudo \
+  OMZP::sudo/sudo.plugin.zsh \
   OMZP::fzf \
   OMZP::git-auto-fetch/git-auto-fetch.plugin.zsh \
     atload"

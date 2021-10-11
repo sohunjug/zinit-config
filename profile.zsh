@@ -1,4 +1,4 @@
-[[ ! -f $S_ZSH/proxy.zsh]] || source $S_ZSH/proxy.zsh
+[[ ! -f $S_ZSH/proxy.zsh ]] || source $S_ZSH/proxy.zsh
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -70,10 +70,10 @@ setopt automenu
 #     if"[[ -f $S_ZSH/p10k.zsh  ]]" $S_ZSH/p10k.zsh \
 #     if"[[ -f $HOME/.fzf.zsh  ]]" $HOME/.fzf.zsh
 #
-[[ ! -f $S_ZSH/envs.zsh  ]] || source $S_ZSH/envs.zsh
-[[ ! -f $S_ZSH/functions.zsh  ]] || source $S_ZSH/functions.zsh
-[[ ! -f $S_ZSH/plugins.zsh  ]] || source $S_ZSH/plugins.zsh
-[[ ! -f $S_ZSH/aliases.zsh  ]] || source $S_ZSH/aliases.zsh
-[[ ! -f $S_ZSH/lazy.zsh  ]] || source $S_ZSH/lazy.zsh
-[[ ! -f $S_ZSH/p10k.zsh  ]] || source $S_ZSH/p10k.zsh
-[[ ! -f $HOME/.fzf.zsh  ]] || source $HOME/.fzf.zsh
+[[ ! -f $S_ZSH/envs.zsh      ]] || source $S_ZSH/envs.zsh
+[[ ! -f $S_ZSH/functions.zsh ]] || source $S_ZSH/functions.zsh
+[[ ! -f $S_ZSH/plugins.zsh   ]] || source $S_ZSH/plugins.zsh
+[[ ! -f $S_ZSH/aliases.zsh   ]] || source $S_ZSH/aliases.zsh
+[[ ! -f $S_ZSH/lazy.zsh      ]] || source $S_ZSH/lazy.zsh
+[[ ! -f $S_ZSH/p10k.zsh      ]] || source $S_ZSH/p10k.zsh
+[[ ! -f $HOME/.fzf.zsh       ]] || source $HOME/.fzf.zsh
