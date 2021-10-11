@@ -1,4 +1,12 @@
 
+ARCH="$(uname -m)"
+if [[ "${ARCH}"  == "arm64" ]]; then
+  BREW_PREFIX="/opt/homebrew"
+else
+  BREW_PREFIX="/usr/local"
+fi
+
+PREFIX="$BREW_PREFIX/opt"
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1  # make prompt faster
 DISABLE_MAGIC_FUNCTIONS=true
 
@@ -9,14 +17,14 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$HOME/.asdf/installs/python/3.9.6/bin/python3
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-export CMAKE_HOME_DIRECTORY=/opt/homebrew/bin/cmake
+export CMAKE_HOME_DIRECTORY=$BREW_PREFIX/bin/cmake
 #####################
 # ENV VARIABLE      #
 #####################
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PAGER=less
-export SHELL=/opt/homebrew/bin/zsh
+export SHELL=$BREW_PREFIX/bin/zsh
 export LANG=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 export BAT_THEME=gruvbox-dark
@@ -30,7 +38,7 @@ export MACOSX_DEPLOYMENT_TARGET=12.0
 export HOMEBREW_GITHUB_API_TOKEN="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"
 export BW_SESSION="SbtiumkEOj/LexAajEId1UDNF5Dx2b32vHC//kgx7+zZvMROfEREdxiR5PjScYIvOZ9we7xW2G22yAJfN1H0tQ=="
 
-export PATH="/opt/homebrew/opt/qt/bin:$PATH"
+export PATH="$BREW_PREFIX/opt/qt/bin:$PATH"
 
 export GEOVIM_PATH="$HOME/.config/nvim/geovim"
 export GEOVIM_EDITOR="nvim" # Set to "vim" to use Vim
@@ -49,13 +57,6 @@ export CFLAGS="-I${SDK_PATH}/usr/include/sasl $CFLAGS"
 export CFLAGS="-I${SDK_PATH}/usr/include $CFLAGS"
 export LDFLAGS="-L${SDK_PATH}/usr/lib $LDFLAGS"
 
-ARCH="$(uname -m)"
-if [[ "${ARCH}"  == "arm64" ]]; then
-    PREFIX="/opt/homebrew/opt"
-else
-    PREFIX="/usr/local/opt"
-fi
-
 ZLIB="${PREFIX}/zlib"
 BZIP2="${PREFIX}/bzip2"
 READLINE="${PREFIX}/readline"
@@ -69,28 +70,28 @@ LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK' 'FFI')
 export PYTHON_CONFIGURE_OPTS="--enable-framework --enable-optimizations"
 
 # ASDF
-if [ -d "$HOME/.asdf" ]; then
-#   zinit ice wait lucid
-#   zinit light asdf-vm/asdf
-# OR
-  load_asdf() {
-    . $HOME/.asdf/asdf.sh
-    export GOPATH=$(go env GOPATH)
-    export PATH="$GOPATH/bin:$PATH"
-  }
+# if [ -d "$HOME/.asdf" ]; then
+# #   zinit ice wait lucid
+# #   zinit light asdf-vm/asdf
+# # OR
+#   load_asdf() {
+#     . $HOME/.asdf/asdf.sh
+#     export GOPATH=$(go env GOPATH)
+#     export PATH="$GOPATH/bin:$PATH"
+#   }
 
-  zinit light-mode wait'0' lucid for \
-    atload'load_asdf' \
-      zdharma/null
-fi
+#   zinit light-mode wait'0' lucid for \
+#     atload'load_asdf' \
+#       zdharma/null
+# fi
 
 export ENABLE_FLUTTER_DESKTOP=true
 
-export QT_DIR="/opt/homebrew/Cellar/qt@5/5.15.2"
+export QT_DIR="$BREW_PREFIX/Cellar/qt@5/5.15.2"
 export QT_VERSION=5.15.2
 export QT_API=5.13.0
 
-export PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/libexec/gnubin:/opt/homebrew/share/luarocks/bin:$PATH"
+export PATH="$HOME/.local/bin:$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$BREW_PREFIX/libexec/gnubin:$BREW_PREFIX/share/luarocks/bin:$PATH"
 
 #####################
 # FZF SETTINGS      #
@@ -154,7 +155,7 @@ for LIB in $LIBS; do
   LIBDIR="${(P)LIB}/lib"
   if [ -d "${LIBDIR}" ]; then
     export LDFLAGS="-L${LIBDIR} $LDFAGS"
-    export DYLD_LIBRARY_PATH="${LIBDIR}:$DYLD_LIBRARY_PATH"
+    # export DYLD_LIBRARY_PATH="${LIBDIR}:$DYLD_LIBRARY_PATH"
     PKGCFGDIR="${LIBDIR}/pkgconfig"
     if [ -d "${PKGCFGDIR}" ]; then
       export PKG_CONFIG_PATH="${PKGCFGDIR} $PKG_CONFIG_PATH"
@@ -168,7 +169,7 @@ for LIB in $LIBS; do
 
 done
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+export LDFLAGS="${LDFLAGS} -L$BREW_PREFIX/lib"
 export CPPFLAGS="${CFLAGS}"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
+export CPPFLAGS="${CPPFLAGS} -I$BREW_PREFIX/include"
 export CXXFLAGS="${CPPFLAGS}"

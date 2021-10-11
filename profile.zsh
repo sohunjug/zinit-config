@@ -13,8 +13,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-setopt promptsubst
-
 #####################
 # HISTORY           #
 #####################
@@ -26,7 +24,8 @@ SAVEHIST=$HISTSIZE
 # SETOPT            #
 #####################
 # set -o emacs
-# setopt vi
+setopt vi
+setopt promptsubst
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_all_dups   # ignore duplicated commands history list
@@ -77,3 +76,4 @@ setopt automenu
 [[ ! -f $S_ZSH/lazy.zsh      ]] || source $S_ZSH/lazy.zsh
 [[ ! -f $S_ZSH/p10k.zsh      ]] || source $S_ZSH/p10k.zsh
 [[ ! -f $HOME/.fzf.zsh       ]] || source $HOME/.fzf.zsh
+[[ ! -f $HOME/.local.zsh     ]] || source $HOME/.local.zsh

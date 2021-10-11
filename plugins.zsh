@@ -60,7 +60,16 @@ zinit wait lucid for \
     # hlissner/zsh-autopair \
     # chriskempson/base16-shell \
 
-zinit load agkozak/zsh-z
+zinit wait lucid for  \
+  agkozak/zsh-z \
+  bobsoppe/zsh-ssh-agent
+
+zinit light-mode compile"handler" for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-bin-gem-node \
+    zinit-zsh/z-a-submods \
+    zdharma/declare-zsh
 
 # =========================================================================== #
 # Asdf-vm - Extendable (v)ersion (m)anager for languages tools
@@ -120,3 +129,32 @@ zinit wait lucid for \
   atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
     trapd00r/LS_COLORS
 
+zinit ice from"gh-r" as"command"
+zinit light junegunn/fzf
+# FZF BYNARY AND TMUX HELPER SCRIPT
+zinit ice lucid wait'0c' as"command" id-as"junegunn/fzf-tmux" pick"bin/fzf-tmux"
+zinit light junegunn/fzf
+# BIND MULTIPLE WIDGETS USING FZF
+zinit ice lucid wait'0c' multisrc"shell/{completion,key-bindings}.zsh" id-as"junegunn/fzf_completions" pick"/dev/null"
+zinit light junegunn/fzf
+
+zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
+zinit light sharkdp/bat
+# BAT-EXTRAS
+zinit ice wait"1" as"program" pick"src/batgrep.sh" lucid
+zinit ice wait"1" as"program" pick"src/batdiff.sh" lucid
+zinit light eth-p/bat-extras
+alias rg=batgrep.sh
+alias bd=batdiff.sh
+alias man=batman.sh
+# RIPGREP
+zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
+zinit light BurntSushi/ripgrep
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+# TREE-SITTER
+zinit ice as"program" from"gh-r" mv"tree* -> tree-sitter" pick"tree-sitter"
+zinit light tree-sitter/tree-sitter
+# PRETTYPING
+zinit ice lucid wait'' as"program" pick"prettyping" atload'alias ping=prettyping'
+zinit load "denilsonsa/prettyping"
