@@ -14,5 +14,8 @@ lazy_env() {
 
 # async_job lazy lazy_env
 
-zinit ice id-as'lazy' wait'5' atload'lazy_env; unfunction lazy_env'
+zinit ice id-as'lazy_env' wait'5' atload'lazy_env; unfunction lazy_env'
+zinit light zdharma/null
+
+zinit ice id-as'lazy_fzf-tab' wait'1' atload'enable-fzf-tab'
 zinit light zdharma/null
