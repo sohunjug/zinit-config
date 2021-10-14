@@ -19,7 +19,7 @@ alias vibrew="nvim ~/Code/dotfiles/Brewfile"
 #####################
 alias vim=$EDITOR
 alias ccat="ccat --bg=dark"
-alias cat=bat
+alias cat="bat -n"
 alias tf=terraform
 alias l="exa -abghHlS --git --group-directories-first"
 alias myip=ip-internal
