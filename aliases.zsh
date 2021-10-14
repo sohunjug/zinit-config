@@ -18,6 +18,7 @@ alias vibrew="nvim ~/Code/dotfiles/Brewfile"
 # ALIASES           #
 #####################
 alias vim=$EDITOR
+alias ccat="ccat --bg=dark"
 alias cat=bat
 alias tf=terraform
 alias l="exa -abghHlS --git --group-directories-first"
