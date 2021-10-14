@@ -98,21 +98,21 @@ export PATH="$HOME/.local/bin:$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$BREW_PREFIX/li
 #####################
 FD_OPTIONS="--hidden --follow"
 export FZF_DEFAULT_OPTS="
+--ansi
+--info inline
+--height 50%
 --prompt 'λ -> '
 --pointer '|>'
 --marker '✓'
---marker +
 --border
---color dark
 --layout reverse
---color fg:250,fg+:15,hl:203,hl+:203
---color info:100,pointer:15,marker:220,spinner:11,header:-1,gutter:-1,prompt:15
 --bind 'ctrl-e:execute(nvim {} < /dev/tty > /dev/tty 2>&1)' > selected
 --bind 'ctrl-v:execute(code {+})'"
-export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS || git ls-files --cached --others --exclude-standard"
+# export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS || git ls-files --cached --others --exclude-standard"
+export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-export FZF_COMPLETION_OPTS="-x"
+# export FZF_COMPLETION_OPTS="-x"
 
 #####################
 # FZF SETTINGS      #
@@ -142,7 +142,7 @@ export FZF_COMPLETION_OPTS="-x"
 # GO SETTINGS       #
 #####################
 export CGO_ENABLED=1
-export CGO_CFLAGS="-g -O2 -Wno-return-local-addr"
+export CGO_CFLAGS="-g -O2"
 
 # --preview '([[ -f {} ]] && (bat --style=numbers --color=always --theme=gruvbox-dark --line-range :500 {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 for LIB in $LIBS; do

@@ -97,3 +97,6 @@ function install_asdf_plugins() {
   done
 }
 
+reload() {
+  source ~/.zshrc
+}
