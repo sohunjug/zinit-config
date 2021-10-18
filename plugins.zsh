@@ -7,7 +7,7 @@
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # zinit ice depth=1; zinit light mafredri/zsh-async
-zinit ice depth=1; zinit light black7375/zsh-lazyenv
+zinit ice depth=1; zinit light qoomon/zsh-lazyload
 
 # zsh-startify, a vim-startify like plugin
 # zinit ice wait"0b" lucid atload"zsh-startify"

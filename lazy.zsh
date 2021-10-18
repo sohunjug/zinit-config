@@ -15,12 +15,13 @@ lazy_env() {
 }
 
 lazy_eval() {
-  # eval "$(fasd --init auto)"
-  # eval "$(direnv hook zsh)"
-  # eval "$(thefuck --alias)"
-  evalcache thefuck --alias
-  evalcache fasd --init auto
-  evalcache direnv hook zsh
+  eval "$(fasd --init auto)"
+  eval "$(direnv hook zsh)"
+  eval "$(thefuck --alias)"
+  eval "$($BREW_PREFIX/bin/brew shellenv)"
+  # evalcache thefuck --alias
+  # evalcache fasd --init auto
+  # evalcache direnv hook zsh
 }
 
 _pipenv() {
@@ -28,30 +29,24 @@ _pipenv() {
 }
 
 
-load:lazy_pipenv() {
+lazy_pipenv() {
   compdef _pipenv pipenv
-}
-
-load:lazy_brew() {
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
 # async_job lazy lazy_env
 
-zinit ice id-as'lazy_env' wait'5' atload'lazy_env; unfunction lazy_env'
+zinit ice id-as'lazy_env' wait'2' atload'lazy_env; unfunction lazy_env'
 zinit light zdharma/null
 
 zinit ice id-as'lazy_fzf-tab' wait'0c' atload'enable-fzf-tab'
 zinit light zdharma/null
 
-# zinit ice id-as'lazy_eval' wait'0c' atload'lazy_eval'
-# zinit light zdharma/null
-lazy_eval
+zinit ice id-as'lazy_eval' wait'0c' atload'lazy_eval; unfunction lazy_eval'
+zinit light zdharma/null
+# lazy_eval
 
-lazyload init:lazy_pipenv pip
-lazyload init:lazy_pipenv python
+lazyload python python3 pip -- 'lazy_pipenv'
 
-lazyload init:lazy_brew brew
 # async_register_callback lazy cb
 
 # async_job lazy lazy_env
