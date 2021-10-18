@@ -19,6 +19,7 @@ zinit ice depth=1; zinit light qoomon/zsh-lazyload
 #         ZSH_TMUX_AUTOSTART=false;
 #         ZSH_TMUX_AUTOCONNECT=false;"
 # zinit snippet OMZP::tmux
+  # OMZL::directories.zsh \
 
 zinit wait lucid for \
   OMZL::clipboard.zsh \
@@ -31,7 +32,6 @@ zinit wait lucid for \
         alias ....='cd ../../..'
         alias .....='cd ../../../..'
     " \
-  OMZL::directories.zsh \
   OMZL::diagnostics.zsh \
   OMZL::git.zsh \
   OMZL::grep.zsh \
@@ -167,7 +167,7 @@ zinit wait lucid for \
       zstyle ':completion:*:git-checkout:*' sort false
       zstyle ':completion:*:descriptions' format '[%d]'
   " \
-  atload"enable-fzf-tab" \
+  atload"autoload enable-fzf-tab" \
       Aloxaf/fzf-tab \
   bindmap"^R -> ^H" atinit"
       zstyle :history-search-multi-word page-size 10
@@ -197,12 +197,12 @@ zinit light junegunn/fzf
 zinit ice lucid wait'0c' multisrc"shell/{completion,key-bindings}.zsh" id-as"junegunn/fzf_completions" pick"/dev/null"
 zinit light junegunn/fzf
 
-zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat"
+zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat" atload"alias cat=bat -p"
 zinit light sharkdp/bat
 # BAT-EXTRAS
+    # alias rg=batgrep.sh
 zinit ice wait"1" as"program" pick"src/batgrep.sh" lucid
 zinit ice wait"1" as"program" pick"src/batdiff.sh" lucid atload'
-    alias rg=batgrep.sh
     alias bd=batdiff.sh
     alias man=batman.sh
 '

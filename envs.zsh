@@ -46,17 +46,9 @@ export GEOVIM_EDITOR="nvim" # Set to "vim" to use Vim
 export GEOVIM_TMUX=0 # Set to 0 to disable TMUX
 export GEOVIM_TERM="alacritty"
 # export GEOVIM_TERM="kitty"
-
 source "$GEOVIM_PATH/geovim.sh"
 
-
 PS1='$(show_virtual_env)'$PS1
-
-
-CPATH="${SDK_PATH}/usr/include"
-export CFLAGS="-I${SDK_PATH}/usr/include/sasl $CFLAGS"
-export CFLAGS="-I${SDK_PATH}/usr/include $CFLAGS"
-export LDFLAGS="-L${SDK_PATH}/usr/lib $LDFLAGS"
 
 ZLIB="${PREFIX}/zlib"
 BZIP2="${PREFIX}/bzip2"
@@ -67,8 +59,6 @@ FFI="${PREFIX}/libffi"
 TCLTK="${PREFIX}/tcl-tk"
 PGSQL="${PREFIX}/postgresql@10"
 LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK' 'FFI')
-
-export PYTHON_CONFIGURE_OPTS="--enable-framework --enable-optimizations"
 
 # ASDF
 # if [ -d "$HOME/.asdf" ]; then
@@ -92,7 +82,7 @@ export QT_DIR="$BREW_PREFIX/Cellar/qt@5/5.15.2"
 export QT_VERSION=5.15.2
 export QT_API=5.13.0
 
-export PATH="$HOME/.local/bin:$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$BREW_PREFIX/libexec/gnubin:$BREW_PREFIX/share/luarocks/bin:$PATH"
+export PATH="$HOME/.local/bin:$BREW_PREFIX/sbin:$BREW_PREFIX/libexec/gnubin:$BREW_PREFIX/share/luarocks/bin:$PATH"
 
 #####################
 # FZF SETTINGS      #

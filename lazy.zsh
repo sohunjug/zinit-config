@@ -8,14 +8,18 @@ lazy_env() {
   export SDKROOT=$(xcrun --show-sdk-path)
   export SDK_PATH=$SDKROOT
 
-  TCLTK=$(brew --prefix tcl-tk)
-  export PYTHON_CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl) ${PYTHON_CONFIGURE_OPTS}"
-  export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$TCLTK/include' ${PYTHON_CONFIGURE_OPTS}"
-  export PYTHON_CONFIGURE_OPTS="--with-tcltk-libs='-L$TCLTK/lib -ltcl8.6 -ltk8.6' ${PYTHON_CONFIGURE_OPTS}"
+  # TCLTK=$(brew --prefix tcl-tk)
+  export CFLAGS="-I${SDK_PATH}/usr/include/sasl $CFLAGS"
+  export CFLAGS="-I${SDK_PATH}/usr/include $CFLAGS"
+  export LDFLAGS="-L${SDK_PATH}/usr/lib $LDFLAGS"
+  # export PYTHON_CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl) ${PYTHON_CONFIGURE_OPTS}"
+  export PYTHON_CONFIGURE_OPTS="--with-openssl=$PREFIX/openssl@3 ${PYTHON_CONFIGURE_OPTS}"
+  export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$PREFIX/tcl-tk/include' ${PYTHON_CONFIGURE_OPTS}"
+  export PYTHON_CONFIGURE_OPTS="--with-tcltk-libs='-L$PREFIX/tcl-tk/lib -ltcl8.6 -ltk8.6' ${PYTHON_CONFIGURE_OPTS}"
 }
 
 lazy_eval() {
-  eval "$(fasd --init auto)"
+  # eval "$(fasd --init auto)"
   eval "$(direnv hook zsh)"
   eval "$(thefuck --alias)"
   eval "$($BREW_PREFIX/bin/brew shellenv)"
@@ -38,8 +42,8 @@ lazy_pipenv() {
 zinit ice id-as'lazy_env' wait'2' atload'lazy_env; unfunction lazy_env'
 zinit light zdharma/null
 
-zinit ice id-as'lazy_fzf-tab' wait'0c' atload'enable-fzf-tab'
-zinit light zdharma/null
+# zinit ice id-as'lazy_fzf-tab' wait'0c' atload'enable-fzf-tab'
+# zinit light zdharma/null
 
 zinit ice id-as'lazy_eval' wait'0c' atload'lazy_eval; unfunction lazy_eval'
 zinit light zdharma/null

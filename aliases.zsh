@@ -7,7 +7,7 @@ alias ll="chpwd -lhaBgb"
 alias ls="chpwd"
 alias la="chpwd -a"
 
-alias ec="/opt/homebrew/bin/emacsclient"
+alias ec="$BREW_PERFIX/bin/emacsclient"
 
 alias tar="tar --exclude '.DS_Store' --exclude '__MACOSX'"
 alias pyssh="${HOME}/.sshlist/ssh.py"
@@ -19,10 +19,7 @@ alias vibrew="nvim ~/Code/dotfiles/Brewfile"
 #####################
 alias vim=$EDITOR
 alias ccat="ccat --bg=dark"
-alias cat="bat -p"
+# alias cat="bat -p"
 alias tf=terraform
 alias l="exa -abghHlS --git --group-directories-first"
-alias myip=ip-internal
-alias sysinfo="inxi -Fxxxz"
-alias psqlstart="sudo systemctl start postgresql.service"
-alias h="http"
+alias sysinfo=neofetch
