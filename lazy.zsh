@@ -42,8 +42,8 @@ lazy_pipenv() {
 zinit ice id-as'lazy_env' wait'2' atload'lazy_env; unfunction lazy_env'
 zinit light zdharma/null
 
-# zinit ice id-as'lazy_fzf-tab' wait'0c' atload'enable-fzf-tab'
-# zinit light zdharma/null
+zinit ice id-as'lazy_fzf-tab' wait'0c' atload'enable-fzf-tab'
+zinit light zdharma/null
 
 zinit ice id-as'lazy_eval' wait'0c' atload'lazy_eval; unfunction lazy_eval'
 zinit light zdharma/null

@@ -167,7 +167,7 @@ zinit wait lucid for \
       zstyle ':completion:*:git-checkout:*' sort false
       zstyle ':completion:*:descriptions' format '[%d]'
   " \
-  atload"autoload enable-fzf-tab" \
+  atload"enable-fzf-tab" \
       Aloxaf/fzf-tab \
   bindmap"^R -> ^H" atinit"
       zstyle :history-search-multi-word page-size 10
