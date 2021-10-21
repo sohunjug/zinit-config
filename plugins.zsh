@@ -98,12 +98,13 @@ zinit id-as"asdf" \
 # IMPORTANT:
 # These plugins should be loaded after ohmyzsh plugins
       # zstyle ':completion:*' completer _expand _complete _ignored _approximate
+  # light-mode atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay" \
 
 zinit wait lucid for \
+  light-mode atinit'ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
+      zdharma/fast-syntax-highlighting \
   light-mode atinit'ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20;' atload"!_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
-  light-mode atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay" \
-      zdharma/fast-syntax-highlighting \
   light-mode blockf atpull'zinit creinstall -q .' \
   atinit"
       zstyle ':completion:*:approximate:' max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
